@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		185E5862199C5BBE00A404C1 /* HMAppInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 185E5861199C5BBE00A404C1 /* HMAppInfo.m */; };
+		185E5864199C96B700A404C1 /* HMAppView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 185E5863199C96B700A404C1 /* HMAppView.xib */; };
 		186BB6C9199C41600080C62E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 186BB6C8199C41600080C62E /* Foundation.framework */; };
 		186BB6CB199C41600080C62E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 186BB6CA199C41600080C62E /* CoreGraphics.framework */; };
 		186BB6CD199C41600080C62E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 186BB6CC199C41600080C62E /* UIKit.framework */; };
@@ -38,6 +39,7 @@
 /* Begin PBXFileReference section */
 		185E5860199C5BBE00A404C1 /* HMAppInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMAppInfo.h; sourceTree = "<group>"; };
 		185E5861199C5BBE00A404C1 /* HMAppInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMAppInfo.m; sourceTree = "<group>"; };
+		185E5863199C96B700A404C1 /* HMAppView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMAppView.xib; sourceTree = "<group>"; };
 		186BB6C5199C41600080C62E /* 01-应用程序管理.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "01-应用程序管理.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		186BB6C8199C41600080C62E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		186BB6CA199C41600080C62E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -124,6 +126,7 @@
 				186BB6DE199C41600080C62E /* HMViewController.m */,
 				185E5860199C5BBE00A404C1 /* HMAppInfo.h */,
 				185E5861199C5BBE00A404C1 /* HMAppInfo.m */,
+				185E5863199C96B700A404C1 /* HMAppView.xib */,
 				186BB6E0199C41600080C62E /* Images.xcassets */,
 				186BB6CF199C41600080C62E /* Supporting Files */,
 			);
@@ -238,6 +241,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				186BB6FE199C4CCF0080C62E /* app.plist in Resources */,
+				185E5864199C96B700A404C1 /* HMAppView.xib in Resources */,
 				186BB6E1199C41600080C62E /* Images.xcassets in Resources */,
 				186BB6D3199C41600080C62E /* InfoPlist.strings in Resources */,
 				186BB6DC199C41600080C62E /* Main.storyboard in Resources */,

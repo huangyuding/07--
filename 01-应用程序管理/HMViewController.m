@@ -9,6 +9,11 @@
 #import "HMViewController.h"
 #import "HMAppInfo.h"
 
+#define kAppViewW 80
+#define kAppViewH 90
+#define kColCount 3
+#define kStartY   20
+
 @interface HMViewController ()
 /** 应用程序列表 */
 @property (nonatomic, strong) NSArray *appList;
@@ -29,11 +34,6 @@
     [super viewDidLoad];
     
     // 搭建界面，九宫格
-#define kAppViewW 80
-#define kAppViewH 90
-#define kColCount 3
-#define kStartY   20
-    
     // 320 - 3 * 80 = 80 / 4 = 20
     CGFloat marginX = (self.view.bounds.size.width - kColCount * kAppViewW) / (kColCount + 1);
     CGFloat marginY = 10;
@@ -53,62 +53,30 @@
         CGFloat x = marginX + col * (marginX + kAppViewW);
         CGFloat y = kStartY + marginY + row * (marginY + kAppViewH);
         
-        UIView *appView = [[UIView alloc] initWithFrame:CGRectMake(x, y, kAppViewW, kAppViewH)];
-//        appView.backgroundColor = [UIColor redColor];
+        // 从XIB来加载自定义视图
+        UIView *appView = [[[NSBundle mainBundle] loadNibNamed:@"HMAppView" owner:nil options:nil] lastObject];
+        // 设置视图位置
+        appView.frame = CGRectMake(x, y, kAppViewW, kAppViewH);
+        
         [self.view addSubview:appView];
         
         // 实现视图内部细节
-//        NSDictionary *dict = self.appList[i];
         HMAppInfo *appInfo = self.appList[i];
         
         // 1> UIImageView
-        UIImageView *icon = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kAppViewW, 50)];
-//        icon.backgroundColor = [UIColor greenColor];
+        UIImageView *icon = appView.subviews[0];
         
         // 设置图像
-//        icon.image = [UIImage imageNamed:dict[@"icon"]];
-//        icon.image = [UIImage imageNamed:appInfo.icon];
         icon.image = appInfo.image;
         
-        // 设置图像填充模式，等比例显示(CTRL+6)
-        icon.contentMode = UIViewContentModeScaleAspectFit;
-        
-        [appView addSubview:icon];
-        
         // 2> UILabel -> 应用程序名称
-        // CGRectGetMaxY(frame) = frame.origin.y + frame.size.height
-        UILabel *lable = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(icon.frame), kAppViewW, 20)];
-//        lable.backgroundColor = [UIColor blueColor];
+        UILabel *label = appView.subviews[1];
         
         // 设置应用程序名称
-//        lable.text = dict[@"name"];
-        lable.text = appInfo.name;
-        
-        // 设置字体
-        lable.font = [UIFont systemFontOfSize:13.0];
-        lable.textAlignment = NSTextAlignmentCenter;
-        
-        [appView addSubview:lable];
+        label.text = appInfo.name;
         
         // 3> UIButton -> 下载按钮
-        UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(lable.frame), kAppViewW, 20)];
-        button.backgroundColor = [UIColor yellowColor];
-        
-        // 背景图片
-        [button setBackgroundImage:[UIImage imageNamed:@"buttongreen"] forState:UIControlStateNormal];
-        [button setBackgroundImage:[UIImage imageNamed:@"buttongreen_highlighted"] forState:UIControlStateHighlighted];
-        
-        // 按钮都是有状态的，不同状态可以对应不同的标题
-        [button setTitle:@"下载" forState:UIControlStateNormal];
-        // *** 一定不要使用以下方法，修改按钮标题
-//        button.titleLabel.text = @"aaa";
-        
-        // 修改字体（titleLabel是只读的）
-        // readonly表示不允许修改titleLabel的指针，但是可以修改label的字体
-        // 提示：按钮的字体是不区分状态的！
-        button.titleLabel.font = [UIFont systemFontOfSize:12.0];
-        
-        [appView addSubview:button];
+        UIButton *button = appView.subviews[2];
         
         // 给按钮添加监听方法
         button.tag = i;
