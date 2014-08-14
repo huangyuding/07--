@@ -11,7 +11,10 @@
 
 @interface HMAppView : UIView
 
-//@property (weak, nonatomic) IBOutlet UIButton *button;
+/** 类方法，方便调用视图 */
++ (instancetype)appView;
+/** 实例化视图，并使用appInfo设置视图的显示 */
++ (instancetype)appViewWithAppInfo:(HMAppInfo *)appInfo;
 
 // 自定义视图中显示的数据来源是数据模型
 // 使用模型设置自定义视图的显示

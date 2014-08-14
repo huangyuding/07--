@@ -54,80 +54,19 @@
         CGFloat x = marginX + col * (marginX + kAppViewW);
         CGFloat y = kStartY + marginY + row * (marginY + kAppViewH);
         
-        // 从XIB来加载自定义视图
-        HMAppView *appView = [[[NSBundle mainBundle] loadNibNamed:@"HMAppView" owner:nil options:nil] lastObject];
+//        // 从XIB来加载自定义视图
+//        HMAppView *appView = [[[NSBundle mainBundle] loadNibNamed:@"HMAppView" owner:nil options:nil] lastObject];
+//        HMAppView *appView = [HMAppView appView];
+        HMAppView *appView = [HMAppView appViewWithAppInfo:self.appList[i]];
+        
         // 设置视图位置
         appView.frame = CGRectMake(x, y, kAppViewW, kAppViewH);
         
         [self.view addSubview:appView];
         
-        // 实现视图内部细节
-        appView.appInfo = self.appList[i];
-        
-        // 3> UIButton -> 下载按钮
-//        UIButton *button = appView.subviews[2];
-//        UIButton *button = appView.button;
-//        
-//        // 给按钮添加监听方法
-//        button.tag = i;
-//        
-//        [button addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside];
+//        // 实现视图内部细节
+//        appView.appInfo = self.appList[i];
     }
 }
-
-///** 按钮监听方法 */
-//- (void)click:(UIButton *)button
-//{
-//    NSLog(@"%s %d", __func__, button.tag);
-//    
-//    // 取出appInfo
-//    HMAppInfo *appInfo = self.appList[button.tag];
-//    
-//    // 添加一个UILabel到界面上
-//    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(80, 400, 160, 40)];
-//    // 数值是0表示黑色，1表示纯白
-//    // alpha表示透明度
-//    label.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.2];
-//    
-//    label.text = appInfo.name;
-//    label.textAlignment = NSTextAlignmentCenter;
-//    
-//    [self.view addSubview:label];
-//    // 动画效果
-//    // 收尾式动画，修改对象的属性，frame,bounds,alpha
-//    // 初始透明度，完全透明
-//    label.alpha = 0.0;
-//    
-//    // 禁用按钮
-//    button.enabled = NO;
-//    
-//    // 动画结束之后删除
-//    // ^ 表示是block，块代码，是一个预先准备好的代码块，可以当做参数传递，在需要的时候执行！
-//    // 块代码在OC中，使用的非常普遍！
-//    [UIView animateWithDuration:1.0f animations:^{
-//        NSLog(@"动画开始");
-//        // 要修改的动画属性
-//        label.alpha = 1.0;
-//    } completion:^(BOOL finished) {
-//        [UIView animateWithDuration:1.0 animations:^{
-//            label.alpha = 0.0;
-//        } completion:^(BOOL finished) {
-//            // 动画完成后，所做的操作
-//            NSLog(@"动画完成");
-//            
-////            button.enabled = NO;
-//            
-//            [label removeFromSuperview];
-//        }];
-//    }];
-//    
-//    NSLog(@"-------");
-//    
-//    // 收尾式动画，不容易监听动画完成时间，而且不容易实现动画嵌套
-////    [UIView beginAnimations:nil context:nil];
-////    [UIView setAnimationDuration:1.0f];
-////    label.alpha = 1.0;
-////    [UIView commitAnimations];
-//}
 
 @end

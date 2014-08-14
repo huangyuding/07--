@@ -16,6 +16,23 @@
 
 @implementation HMAppView
 
++ (instancetype)appView
+{
+    return [[[NSBundle mainBundle] loadNibNamed:@"HMAppView" owner:nil options:nil] lastObject];
+}
+
++ (instancetype)appViewWithAppInfo:(HMAppInfo *)appInfo
+{
+    // 1. 实例化一个视图
+    HMAppView *view = [self appView];
+    
+    // 2. 设置视图的显示
+    view.appInfo = appInfo;
+    
+    // 3. 返回视图
+    return view;
+}
+
 /**
  利用setter方法设置视图的界面显示
  */
