@@ -7,6 +7,7 @@
 //
 
 #import "HMViewController.h"
+#import "HMAppInfo.h"
 
 @interface HMViewController ()
 /** 应用程序列表 */
@@ -18,7 +19,23 @@
 - (NSArray *)appList
 {
     if (_appList == nil) {
-        _appList = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"app.plist" ofType:nil]];
+        // appList保存的是字典=>模型
+//        _appList = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"app.plist" ofType:nil]];
+        NSArray *array = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"app.plist" ofType:nil]];
+        
+        // 创建一个临时数组
+        NSMutableArray *arraM = [NSMutableArray array];
+        // 遍历数组，依次转换模型
+        for (NSDictionary *dict in array) {
+            HMAppInfo *appInfo = [[HMAppInfo alloc] init];
+            appInfo.name = dict[@"name"];
+            appInfo.icon = dict[@"icon"];
+            
+            [arraM addObject:appInfo];
+        }
+        
+        // 将临时数组为属性赋值
+        _appList = arraM;
     }
     return _appList;
 }
@@ -57,14 +74,17 @@
         [self.view addSubview:appView];
         
         // 实现视图内部细节
-        NSDictionary *dict = self.appList[i];
+//        NSDictionary *dict = self.appList[i];
+        HMAppInfo *appInfo = self.appList[i];
         
         // 1> UIImageView
         UIImageView *icon = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kAppViewW, 50)];
 //        icon.backgroundColor = [UIColor greenColor];
         
         // 设置图像
-        icon.image = [UIImage imageNamed:dict[@"icon"]];
+//        icon.image = [UIImage imageNamed:dict[@"icon"]];
+        icon.image = [UIImage imageNamed:appInfo.icon];
+        
         // 设置图像填充模式，等比例显示(CTRL+6)
         icon.contentMode = UIViewContentModeScaleAspectFit;
         
@@ -76,7 +96,9 @@
 //        lable.backgroundColor = [UIColor blueColor];
         
         // 设置应用程序名称
-        lable.text = dict[@"name"];
+//        lable.text = dict[@"name"];
+        lable.text = appInfo.name;
+        
         // 设置字体
         lable.font = [UIFont systemFontOfSize:13.0];
         lable.textAlignment = NSTextAlignmentCenter;
