@@ -19,23 +19,7 @@
 - (NSArray *)appList
 {
     if (_appList == nil) {
-        // appList保存的是字典=>模型
-//        _appList = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"app.plist" ofType:nil]];
-        NSArray *array = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"app.plist" ofType:nil]];
-        
-        // 创建一个临时数组
-        NSMutableArray *arraM = [NSMutableArray array];
-        // 遍历数组，依次转换模型
-        for (NSDictionary *dict in array) {
-            HMAppInfo *appInfo = [[HMAppInfo alloc] init];
-            appInfo.name = dict[@"name"];
-            appInfo.icon = dict[@"icon"];
-            
-            [arraM addObject:appInfo];
-        }
-        
-        // 将临时数组为属性赋值
-        _appList = arraM;
+        _appList = [HMAppInfo appList];
     }
     return _appList;
 }
@@ -83,7 +67,8 @@
         
         // 设置图像
 //        icon.image = [UIImage imageNamed:dict[@"icon"]];
-        icon.image = [UIImage imageNamed:appInfo.icon];
+//        icon.image = [UIImage imageNamed:appInfo.icon];
+        icon.image = appInfo.image;
         
         // 设置图像填充模式，等比例显示(CTRL+6)
         icon.contentMode = UIViewContentModeScaleAspectFit;
