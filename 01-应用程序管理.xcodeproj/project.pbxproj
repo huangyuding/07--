@@ -21,6 +21,7 @@
 		186BB6EA199C41610080C62E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 186BB6CC199C41600080C62E /* UIKit.framework */; };
 		186BB6F2199C41610080C62E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 186BB6F0199C41610080C62E /* InfoPlist.strings */; };
 		186BB6F4199C41610080C62E /* _1_______Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 186BB6F3199C41610080C62E /* _1_______Tests.m */; };
+		186BB6FE199C4CCF0080C62E /* app.plist in Resources */ = {isa = PBXBuildFile; fileRef = 186BB6FD199C4CCF0080C62E /* app.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		186BB6EF199C41610080C62E /* 01-应用程序管理Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "01-应用程序管理Tests-Info.plist"; sourceTree = "<group>"; };
 		186BB6F1199C41610080C62E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		186BB6F3199C41610080C62E /* _1_______Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "_1_______Tests.m"; sourceTree = "<group>"; };
+		186BB6FD199C4CCF0080C62E /* app.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = app.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +128,7 @@
 		186BB6CF199C41600080C62E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				186BB6FD199C4CCF0080C62E /* app.plist */,
 				186BB6D0199C41600080C62E /* 01-应用程序管理-Info.plist */,
 				186BB6D1199C41600080C62E /* InfoPlist.strings */,
 				186BB6D4199C41600080C62E /* main.m */,
@@ -229,6 +232,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				186BB6FE199C4CCF0080C62E /* app.plist in Resources */,
 				186BB6E1199C41600080C62E /* Images.xcassets in Resources */,
 				186BB6D3199C41600080C62E /* InfoPlist.strings in Resources */,
 				186BB6DC199C41600080C62E /* Main.storyboard in Resources */,
